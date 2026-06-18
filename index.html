@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cyril Lylie Opiaza | Portfolio</title>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <style>
+         *{
+         margin:0;
+         padding:0;
+         box-sizing:border-box;
+         }
+         html{
+         scroll-behavior:smooth;
+         }
+         body{
+         font-family:'Poppins',sans-serif;
+         line-height:1.6;
+         color:#333;
+         }
+         .container{
+         width:90%;
+         max-width:1200px;
+         margin:auto;
+         }
+         section{
+         padding:80px 0;
+         }
+         h1,h2,h3{
+         margin-bottom:15px;
+         }
+         p{
+         margin-bottom:15px;
+         }
+         .btn{
+         display:inline-block;
+         background:#2563eb;
+         color:#fff;
+         padding:12px 25px;
+         border-radius:8px;
+         text-decoration:none;
+         transition:all .3s ease;
+         box-shadow:0 4px 10px rgba(37,99,235,.2);
+         }
+         .btn:hover{
+         background:#1d4ed8;
+         transform:translateY(-3px);
+         box-shadow:0 10px 20px rgba(37,99,235,.3);
+         }
+         .btn:active{
+         transform:translateY(0);
+         }
+         /* NAVBAR */
+         nav{
+         position:fixed;
+         top:0;
+         width:100%;
+         background:rgba(255,255,255,.85);
+         backdrop-filter:blur(10px);
+         -webkit-backdrop-filter:blur(10px);
+         box-shadow:0 2px 10px rgba(0,0,0,.08);
+         z-index:1000;
+         }
+         .nav-container{
+         display:flex;
+         justify-content:space-between;
+         align-items:center;
+         padding:20px 5%;
+         }
+         .logo{
+         font-size:1.2rem;
+         font-weight:700;
+         }
+         .nav-links{
+         display:flex;
+         list-style:none;
+         gap:25px;
+         }
+         .nav-links a{
+         position:relative;
+         text-decoration:none;
+         color:#333;
+         font-weight:500;
+         transition:all .3s ease;
+         }
+         /* Text color change */
+         .nav-links a:hover{
+         color:#2563eb;
+         }
+         /* Animated underline */
+         .nav-links a::after{
+         content:"";
+         position:absolute;
+         left:0;
+         bottom:-5px;
+         width:0;
+         height:2px;
+         background:#2563eb;
+         transition:width .3s ease;
+         }
+         .nav-links a:hover::after{
+         width:100%;
+         }
+         /* MOBILE MENU BUTTON */
+         .menu-toggle{
+         display:none;
+         font-size:26px;
+         cursor:pointer;
+         }
+         /* MOBILE NAV */
+         @media(max-width:768px){
+         .menu-toggle{
+         display:block;
+         }
+         .nav-links{
+         position:absolute;
+         top:70px;
+         right:5%;
+         background:#fff;
+         flex-direction:column;
+         width:200px;
+         padding:15px;
+         box-shadow:0 5px 15px rgba(0,0,0,.1);
+         display:none;
+         border-radius:10px;
+         }
+         .nav-links.active{
+         display:flex;
+         }
+         }
+         /* HERO */
+         .hero{
+         min-height:100vh;
+         display:flex;
+         align-items:center;
+         background:linear-gradient(135deg,#eff6ff,#ffffff);
+         }
+         .hero-content{
+         display:grid;
+         grid-template-columns:1fr 1fr;
+         gap:50px;
+         align-items:center;
+         }
+         .hero-text h1{
+         font-size:3rem;
+         }
+         .hero-text span{
+         color:#2563eb;
+         }
+         .hero-image{
+         text-align:center;
+         }
+         .hero-image img{
+         width:300px;
+         height:300px;
+         object-fit:cover;
+         border-radius:50%;
+         border:6px solid #2563eb;
+         animation:float 4s ease-in-out infinite;
+         }
+         @keyframes float{
+         0%{
+         transform:translateY(0);
+         }
+         50%{
+         transform:translateY(-12px);
+         }
+         100%{
+         transform:translateY(0);
+         }
+         }
+         /* ABOUT */
+         .about-grid{
+         display:grid;
+         grid-template-columns:1fr 1fr;
+         gap:50px;
+         }
+         .card{
+         background:#fff;
+         padding:25px;
+         border-radius:10px;
+         box-shadow:0 5px 15px rgba(0,0,0,.08);
+         }
+         /* SKILLS */
+         .skills-grid{
+         display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+         gap:20px;
+         }
+         .skill-card{
+         background:#fff;
+         padding:25px;
+         border-radius:10px;
+         box-shadow:0 5px 15px rgba(0,0,0,.08);
+         }
+         /* EXPERIENCE */
+         .timeline{
+         display:flex;
+         flex-direction:column;
+         gap:25px;
+         }
+         .exp-card{
+         background:#fff;
+         padding:25px;
+         border-left:5px solid #2563eb;
+         box-shadow:0 5px 15px rgba(0,0,0,.08);
+         }
+         /* WEBSITES SECTION */
+         .websites{
+         background:#f8fafc;
+         text-align:center;
+         }
+         .website-grid{
+         display:grid;
+         grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+         gap:25px;
+         margin-top:30px;
+         align-items:center;
+         }
+         .website-card{
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         background:#fff;
+         padding:20px;
+         border-radius:12px;
+         box-shadow:0 5px 15px rgba(0,0,0,.08);
+         transition:0.3s ease;
+         position:relative;
+         overflow:hidden;
+         }
+         .website-card:hover{
+         transform:translateY(-5px);
+         }
+         .website-card img{
+         max-width:250px;
+         max-height:auto;
+         object-fit:contain;
+         transition:all .4s ease;
+         }
+         .website-card:hover img{
+         transform:scale(1.08);
+         }
+         /* Blue glow effect */
+         .website-card:hover{
+         box-shadow:
+         0 10px 30px rgba(37,99,235,.15);
+         }
+         /* PROJECTS */
+         .projects{
+         background:#f8fafc;
+         }
+         .project-grid{
+         display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+         gap:25px;
+         }
+         .project-card{
+         background:#fff;
+         padding:25px;
+         border-radius:10px;
+         box-shadow:0 5px 15px rgba(0,0,0,.08);
+         }
+         /* CONTACT */
+         .contact{
+         text-align:center;
+         }
+         .contact-info{
+         margin-top:20px;
+         }
+         /* FOOTER */
+         footer{
+         background:#111827;
+         color:#fff;
+         text-align:center;
+         padding:25px;
+         }
+         /* RESPONSIVE */
+         @media(max-width:768px){
+         .hero-content,
+         .about-grid{
+         grid-template-columns:1fr;
+         text-align:center;
+         }
+         .hero-text h1{
+         font-size:2.2rem;
+         }
+         .hero-image img{
+         width:220px;
+         height:220px;
+         }
+         .nav-links{
+         display:none;
+         }
+         }
+         /* Smooth Hover Effects */
+         .card,
+         .skill-card,
+         .project-card,
+         .exp-card,
+         .website-card{
+         transition:0.3s ease;
+         }
+         .card:hover,
+         .skill-card:hover,
+         .project-card:hover,
+         .exp-card:hover,
+         .website-card:hover{
+         transform:translateY(-6px);
+         box-shadow:0 12px 25px rgba(0,0,0,.12);
+         }
+         /*Section Spacing - Better Visual */
+         section{
+         padding:100px 0;
+         }
+         h2{
+         font-size:2rem;
+         text-align:center;
+         margin-bottom:40px;
+         position:relative;
+         }
+         h2::after{
+         content:"";
+         width:0;
+         height:3px;
+         background:#2563eb;
+         display:block;
+         margin:10px auto 0;
+         border-radius:5px;
+         animation:growLine 1s ease forwards;
+         }
+         @keyframes growLine{
+         from{
+         width:0;
+         }
+         to{
+         width:60px;
+         }
+         }
+         /*Hero Modern Look */
+         .hero{
+         background:linear-gradient(135deg,#eef2ff,#ffffff);
+         }
+         .hero-text h1{
+         line-height:1.2;
+         }
+         .hero-text p{
+         font-size:1.05rem;
+         color:#555;
+         }
+         /*Animated Card */
+         .card,
+         .skill-card,
+         .project-card,
+         .exp-card,
+         .website-card{
+         transition:all .35s ease;
+         }
+         .card:hover,
+         .skill-card:hover,
+         .project-card:hover,
+         .exp-card:hover,
+         .website-card:hover{
+         transform:translateY(-8px);
+         box-shadow:0 15px 35px rgba(0,0,0,.12);
+         }
+         /* FOOTER */
+         footer{
+         background:#0f172a;
+         color:white;
+         text-align:center;
+         padding:60px 20px;
+         }
+         .footer-content h3{
+         margin-bottom:10px;
+         font-size:1.5rem;
+         }
+         .footer-content p{
+         color:#cbd5e1;
+         }
+         .footer-links{
+         margin:25px 0;
+         display:flex;
+         justify-content:center;
+         flex-wrap:wrap;
+         gap:25px;
+         }
+         .footer-links a{
+         color:white;
+         text-decoration:none;
+         position:relative;
+         transition:.3s;
+         }
+         /* Animated underline */
+         .footer-links a::after{
+         content:"";
+         position:absolute;
+         left:0;
+         bottom:-5px;
+         width:0;
+         height:2px;
+         background:#3b82f6;
+         transition:.3s ease;
+         }
+         .footer-links a:hover{
+         color:#60a5fa;
+         }
+         .footer-links a:hover::after{
+         width:100%;
+         }
+         .social-icons{
+         display:flex;
+         justify-content:center;
+         gap:20px;
+         margin:30px 0;
+         }
+         .social-icons a{
+         width:50px;
+         height:50px;
+         border-radius:50%;
+         background:rgba(255,255,255,.08);
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         color:white;
+         font-size:20px;
+         text-decoration:none;
+         transition:.35s ease;
+         }
+         .social-icons a:hover{
+         background:#2563eb;
+         transform:translateY(-8px) scale(1.1);
+         box-shadow:0 10px 25px rgba(37,99,235,.4);
+         }
+         .back-to-top{
+         position:fixed;
+         bottom:25px;
+         right:25px;
+         width:50px;
+         height:50px;
+         background:#2563eb;
+         color:white;
+         border-radius:50%;
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         text-decoration:none;
+         font-size:20px;
+         box-shadow:0 5px 15px rgba(37,99,235,.3);
+         transition:.3s;
+         }
+         .back-to-top:hover{
+         transform:translateY(-5px);
+         background:#1d4ed8;
+         }
+         /*Contact me*/
+         .contact{
+         text-align:center;
+         background:#ffff;
+         }
+         .contact-intro{
+         max-width:700px;
+         margin:0 auto 30px;
+         }
+         .contact-buttons{
+         display:flex;
+         justify-content:center;
+         gap:15px;
+         flex-wrap:wrap;
+         }
+         .btn-secondary{
+         background:#111827;
+         }
+         .btn-secondary:hover{
+         background:#1f2937;
+         }
+      </style>
+      <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   </head>
+   <script>
+      function toggleMenu(){
+         document.getElementById("navLinks").classList.toggle("active");
+      }
+   </script>
+   <body>
+      <nav>
+         <div class="nav-container">
+            <div class="logo">Cyril Opiaza</div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links" id="navLinks">
+               <li><a href="#about">About</a></li>
+               <li><a href="#skills">Skills</a></li>
+               <li><a href="#experience">Experience</a></li>
+               <li><a href="#websites">Websites</a></li>
+               <li><a href="#projects">Projects</a></li>
+               <li><a href="#contact">Contact</a></li>
+            </ul>
+         </div>
+      </nav>
+      <section class="hero">
+         <div class="container">
+            <div class="hero-content">
+               <div class="hero-text">
+                  <h1>Hi, I'm <span>Cyril Lylie Opiaza</span></h1>
+                  <h3>Web Development Specialist</h3>
+                  <p>
+                     I specialize in WordPress website management,
+                     DevHub content deployment, quality assurance testing,
+                     and content implementation. I help businesses maintain
+                     accurate, user-friendly, and high-performing websites.
+                  </p>
+                  <a href="#contact" class="btn">Contact Me</a>
+               </div>
+               <div class="hero-image">
+                  <img src="profile_picture.jpg" alt="Profile Photo">
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="about">
+         <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+               <div class="card">
+                  <p>
+                     I am a Web Development Specialist with experience in
+                     WordPress, DevHub, QA testing, website updates,
+                     content deployment, and client support.
+                  </p>
+                  <p>
+                     I enjoy solving problems, improving workflows,
+                     and ensuring websites provide the best possible
+                     user experience.
+                  </p>
+               </div>
+               <div class="card">
+                  <h3>Quick Facts</h3>
+                  <p>📍 Dasmariñas, Cavite, Philippines</p>
+                  <p>🎓 BS Information Technology</p>
+                  <p>💼 3+ Years Professional Experience</p>
+                  <p>🌐 WordPress | DevHub | QA Testing</p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="skills">
+         <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+               <div class="skill-card">
+                  <h3>Website Management</h3>
+                  <p>WordPress, Content Updates, Multi-location Pages</p>
+               </div>
+               <div class="skill-card">
+                  <h3>Content Deployment</h3>
+                  <p>DevHub, Spreadsheet Integration, Publishing Workflows</p>
+               </div>
+               <div class="skill-card">
+                  <h3>Quality Assurance</h3>
+                  <p>Testing, Troubleshooting, Content Verification</p>
+               </div>
+               <div class="skill-card">
+                  <h3>Technical Skills</h3>
+                  <p>HTML, CSS, JavaScript, Python, C++, Microsoft Office, Google Workspace</p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="experience">
+         <div class="container">
+            <h2>Experience</h2>
+            <div class="timeline">
+               <div class="exp-card">
+                  <h3>Web Development Specialist</h3>
+                  <h4>Ignite Visibility</h4>
+                  <p>Dec 2024 - June 2026</p>
+                  <p>
+                     Managed WordPress updates, blog publishing,
+                     DevHub deployment, and QA testing.
+                  </p>
+               </div>
+               <div class="exp-card">
+                  <h3>Client Success & Marketing Specialist</h3>
+                  <h4>Axadra Ventures, Inc.</h4>
+                  <p>Jul 2023 - Dec 2024</p>
+                  <p>
+                     Supported customers, managed website content,
+                     resolved issues, and deployed content through DevHub.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="websites" class="websites">
+         <div class="container">
+            <h2>Digital Projects & Website Work Experience</h2>
+            <p>Websites I have contributed to through website management, content deployment, and quality assurance support.</p>
+            <div class="website-grid">
+               <a href="https://www.afcurgentcare.com/" target="_blank" class="website-card">
+               <img src="afc-logo.png" alt="AFC Urgent Care Logo">
+               </a>
+               <a href="https://venturex.com/" target="_blank" class="website-card">
+               <img src="venture-x-logo.png" alt="Venture X Logo">
+               </a>
+               <a href="https://www.seniorcareauthority.com/" target="_blank" class="website-card">
+               <img src="SCA-logo.png" alt="Senior Care Authority Logo">
+               </a>
+            </div>
+         </div>
+      </section>
+      <section class="projects" id="projects">
+         <div class="container">
+            <h2>Projects & Case Studies</h2>
+            <div class="project-grid">
+               <div class="project-card">
+                  <h3>WordPress Content Management</h3>
+                  <p>
+                     Managed website updates, blog publishing,
+                     content implementation, and page maintenance.
+                  </p>
+               </div>
+               <div class="project-card">
+                  <h3>Website QA Testing</h3>
+                  <p>
+                     Conducted content validation, bug identification,
+                     and website testing to improve user experience.
+                  </p>
+               </div>
+               <div class="project-card">
+                  <h3>DevHub Deployment</h3>
+                  <p>
+                     Organized and deployed content through spreadsheet
+                     integrations and DevHub workflows.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="contact" class="contact">
+         <div class="container">
+            <h2>Let's Work Together</h2>
+            <p class="contact-intro">
+               I'm available for website management, WordPress support,
+               content deployment, QA testing, and web development projects.
+               If you'd like to discuss an opportunity or collaboration,
+               I'd love to hear from you.
+            </p>
+            <div class="contact-buttons">
+               <a href="mailto:opiazacyril.lylie@gmail.com" class="btn">
+               <i class="fas fa-envelope"></i> Email Me
+               </a>
+            </div>
+         </div>
+      </section>
+      <footer>
+         <div class="footer-content">
+            <h3>Cyril Lylie Opiaza</h3>
+            <p>
+               Web Development Specialist | WordPress | QA Testing |
+               Content Deployment
+            </p>
+            <div class="footer-links">
+               <a href="#about">About</a>
+               <a href="#skills">Skills</a>
+               <a href="#experience">Experience</a>
+               <a href="#websites">Websites</a>
+               <a href="#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+               <a href="https://github.com/LiisyOrp" target="_blank">
+               <i class="fab fa-github"></i>
+               </a>
+               <a href="https://www.linkedin.com/in/cl-opiaza/" target="_blank">
+               <i class="fab fa-linkedin-in"></i>
+               </a>
+               <a href="mailto:opiazacyril.lylie@gmail.com">
+               <i class="fas fa-envelope"></i>
+               </a>
+               <a href="tel:+639167013347">
+               <i class="fas fa-phone"></i>
+               </a>
+            </div>
+            <p class="copyright">
+               © 2026 Cyril Lylie Opiaza. All Rights Reserved.
+            </p>
+         </div>
+      </footer>
+      <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+      </a>
+   </body>
+</html>
